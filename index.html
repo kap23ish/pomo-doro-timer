@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <style>
+        :root {
+            --work-color: hwb(183 9% 83%);
+            --rest-color: #d03c3c;
+            --button-hover: #9df213;
+            --background: #aed6fd;
+            --container-bg: rgb(110, 255, 185);
+            --text-color: #63ccc8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: var(--background);
+            color: var(--text-color);
+            transition: background-color 0.3s ease;
+        }
+
+        body.rest-mode {
+            background-color: #e8f6f5;
+        }
+
+        .timer-container {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: var(--container-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-width: 300px;
+        }
+
+        .timer-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        #time {
+            font-size: 5rem;
+            font-weight: bold;
+            margin: 1.5rem 0;
+            color: var(--work-color);
+            transition: color 0.3s ease;
+        }
+
+        body.rest-mode #time {
+            color: var(--rest-color);
+        }
+
+        #mode {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        button {
+            font-size: 1.1rem;
+            margin: 0.7rem;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            background-color: var(--work-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        body.rest-mode button {
+            background-color: var(--rest-color);
+        }
+
+        #toggleMode {
+            background-color: var(--rest-color);
+        }
+
+        body.rest-mode #toggleMode {
+            background-color: var(--work-color);
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 480px) {
+            .timer-container {
+                padding: 1.5rem;
+                min-width: 280px;
+            }
+
+            #time {
+                font-size: 4rem;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
+                margin: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timer-container">
+        <div id="mode">Work Time</div>
+        <div id="time">25:00</div>
+        <button id="start">Start</button>
+        <button id="toggleMode">Switch to Rest</button>
+        <button id="reset">Reset</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
